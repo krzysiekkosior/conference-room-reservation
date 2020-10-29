@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room details</title>
+</head>
+<body style="background-color: coral">
+    <h1>Room {{ room.name }}</h1>
+        Capacity: {{room.capacity}}<br>
+        {% if room.projector == True %}
+        Projector: Avaible<br>
+        {% else %}
+        Projector: Not avaible<br>
+        {% endif %}
+        {% if room.is_avaible_today == True %}
+        <p style="color:green; margin:0px"><b>Avaible today</b></p>
+         {% else %}
+        <p style="color:red; margin:0px"><b>Not avaible today</b></p>
+        {% endif %}
+        Reservations:
+    <ol>
+        {% for reservation in reservations %}
+        <li>
+            {{ reservation.date }}<br>
+            Comments: {{ reservation.comment }}
+        </li>
+        {% endfor %}
+    </ol><br>
+
+    <a href="/room/modify/{{ room.id }}">Modify</a><br><br>
+    <a href="/room/delete/{{ room.id }}">Delete</a><br><br>
+    <a href="/room/reserve/{{ room.id }}">Reserve</a><br><br><br><br>
+    <a href="/room/">Go back to list</a><br><br><br>
+</body>
+
+<footer style="font-size:12px">
+    Strona wykonana przez: Krzysiek Kosior
+</footer>
+</html>

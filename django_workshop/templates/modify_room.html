@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add room</title>
+</head>
+<body style="background-color: coral">
+    <h1>Modify room</h1>
+    <form method="POST">
+        {% csrf_token %}
+        Name: <input type="text" name="name" value="{{room.name}}"><br><br>
+        Capacity: <input type="number" min="1" step="1" name="capacity"
+                         value="{{room.capacity}}"><br><br>
+        {% if room.projector == True %}
+        Projector: <input type="checkbox" name="projector" value="on" checked><br><br>
+        {% else %}
+        Projector: <input type="checkbox" name="projector"><br><br>
+        {% endif %}
+        <input type="submit" value="Modify">
+    </form><br><br>
+
+    <h4>{{ message }}</h4><br><br>
+
+    <a href="/room/">Go back to list</a><br><br>
+</body>
+
+<footer style="font-size:12px">
+    Strona wykonana przez: Krzysiek Kosior
+</footer>
+</html>

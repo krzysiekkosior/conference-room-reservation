@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms</title>
+</head>
+<body style="background-color: coral">
+    <h1>Rooms</h1>
+    {% if no_room %}
+    {{ no_room }}<br><br>
+    {% else %}
+    <ol>
+    {% for room in rooms %}
+        <li>
+                <b><a href="/room/{{ room.id }}">{{room.name}} conference room</a></b><br><br>
+
+                Capacity: {{room.capacity}}<br>
+                {% if room.projector == True %}
+                Projector: Avaible<br>
+                {% else %}
+                Projector: Not avaible<br>
+                {% endif %}
+                {% if room.is_avaible_today == True %}
+            <p style="color:green; margin:0px"><b>Avaible today</b></p>
+                 {% else %}
+                <p style="color:red; margin:0px"><b>Not avaible today</b></p>
+                {% endif %}
+                <a href="/room/delete/{{ room.id }}">Delete</a><br>
+                <a href="/room/modify/{{ room.id }}">Modify</a><br>
+                <a href="/room/reserve/{{ room.id }}">Reserve</a>
+        </li>
+        <br>
+    {% endfor %}
+    </ol>
+    {% endif %}
+
+    <a href="/">Go back to menu</a><br><br>
+</body>
+
+<footer style="font-size:12px">
+    Strona wykonana przez: Krzysiek Kosior
+</footer>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserve room</title>
+</head>
+<body style="background-color: coral">
+    <h1>{{ room.name }} room</h1>
+    <form method="POST">
+        {% csrf_token %}
+        Comment: <input type="text" name="comment"><br><br>
+        Reservation date: <input type="date" name="date"><br><br>
+        <input type="submit" value="Reserve">
+    </form><br><br>
+
+    Reservations:
+    <ol>
+        {% for reservation in reservations %}
+        <li>
+            {{ reservation.date }}
+        </li>
+        {% endfor %}
+    </ol>
+
+    <h4>{{ message }}</h4><br><br>
+
+    <a href="/room/">Go back to list</a><br><br>
+</body>
+
+<footer style="font-size:12px">
+    Strona wykonana przez: Krzysiek Kosior
+</footer>
+</html>
